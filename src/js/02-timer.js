@@ -28,6 +28,10 @@ const options = {
     },
 
 };
+
+flatpickr(pickerInput, options);
+
+
 function checkDate(date1, date2) {
     const delta = date1 - date2;
     const result = convertMs(delta);
@@ -38,12 +42,7 @@ function checkDate(date1, date2) {
         startBtn.disabled = false;
 
         startBtn.addEventListener("click", () => {
-            // timerId = setInterval(() => {
-            //     daysRef.textContent = (String(result.days)).padStart(2, "0");
-            //     hoursRef.textContent = (String(result.hours)).padStart(2, "0");
-            //     minutesRef.textContent = (String(result.minutes)).padStart(2, "0");
-            //     secondsRef.textContent = (String(result.seconds)).padStart(2, "0");
-            // }, 1000);
+      
 
             if (timerId > 0) {
                 return;
@@ -62,14 +61,12 @@ function checkDate(date1, date2) {
                     startBtn.disabled = true;
                   }
               }, 1000);
+            
 
         });
        
     }
 }
-
-  
-flatpickr(pickerInput, options);
 
 
 function convertMs(ms) {
