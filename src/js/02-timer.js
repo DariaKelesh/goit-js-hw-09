@@ -1,5 +1,7 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 
 const pickerInput = document.querySelector("#datetime-picker");
 const startBtn = document.querySelector("[data-start]");
@@ -37,7 +39,7 @@ function checkDate(date1, date2) {
     const result = convertMs(delta);
  
     if (date1 < date2) {
-        alert("Please choose a date in the future");
+        Notify.failure(`Please choose a date in the future`);
     } else {
         startBtn.disabled = false;
 
@@ -83,5 +85,3 @@ function convertMs(ms) {
   
     return { days, hours, minutes, seconds };
 }
-
-
