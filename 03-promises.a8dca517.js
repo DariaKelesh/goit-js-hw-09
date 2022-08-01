@@ -1,0 +1,2 @@
+const e=document.querySelector(".form");document.querySelector("button[type=submit]"),document.querySelector("input[name=delay]"),document.querySelector("input[name=step]"),document.querySelector("input[name=amount]");function t(e,t){Math.random();console.log(e,t)}e.addEventListener("submit",(function(e){e.preventDefault();const{delay:u,step:n,amount:o}=e.target;let r=Number(u.value);const m=Number(n.value),c=Number(o.value);for(let e=1;e<=c;e+=1)t(e,r),r+=m}));
+//# sourceMappingURL=03-promises.a8dca517.js.map
