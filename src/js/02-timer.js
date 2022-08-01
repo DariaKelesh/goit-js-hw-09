@@ -35,8 +35,8 @@ flatpickr(pickerInput, options);
 
 
 function checkDate(date1, date2) {
-    const delta = date1 - date2;
-    const result = convertMs(delta);
+    
+   
  
     if (date1 < date2) {
         Notify.failure(`Please choose a date in the future`);
@@ -49,8 +49,10 @@ function checkDate(date1, date2) {
             if (timerId > 0) {
                 return;
               }
-              timerId = setInterval(() => {
-
+            timerId = setInterval(() => {
+                const delta = date1 - date2;
+                const result = convertMs(delta);
+                console.log(result)
                 const { days, hours, minutes, seconds } = result;
             
                 if (delta >= 0) {
