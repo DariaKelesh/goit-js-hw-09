@@ -13,29 +13,29 @@ function handleSubmit(evt) {
     const amountNum = Number(amount.value);
 
     for (let i = 1; i <= amountNum; i += 1) {
-        createPromise(i, delayNum)
+        createPromise(i, delayNum).then(onSuccess)
+        .catch(onError);
         delayNum += stepNum;
     }
 }
 
-
 function createPromise(position, delay) {
-    const shouldResolve = Math.random() > 0.3;
-    const promise = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
+      const shouldResolve = Math.random() > 0.3;
         setTimeout(() => {
             if (shouldResolve) {
-              resolve("Success! Value passed to resolve function");
+                resolve({ position, delay })
             } else {
-              reject("Error! Error passed to reject function");
+                reject({ position, delay })
             }
-          }, delay);
-      });
+        }, delay)
+     })
+  }
 
-    promise
-    .then(({position, delay}) => {
-        Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
-    })
-    .catch(({position, delay}) => {
-        Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
-    });
-}
+function onSuccess({ position, delay }) { 
+    Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+    }
+    
+function onError({ position, delay }) { 
+    Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`)
+    }

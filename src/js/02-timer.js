@@ -24,7 +24,7 @@ const options = {
     minuteIncrement: 1,
 
     onClose(selectedDates) {
-        let chosenDate = selectedDates[0].getTime();
+        chosenDate = selectedDates[0].getTime();
         checkDate(chosenDate, new Date())
     },
 
