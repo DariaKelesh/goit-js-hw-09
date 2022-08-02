@@ -8,7 +8,6 @@ const startBtn = document.querySelector("[data-start]");
 startBtn.disabled = true;
 
 let chosenDate = 0;
-let todaysDate = new Date();
 let timerId = null;
 
 
@@ -26,7 +25,7 @@ const options = {
 
     onClose(selectedDates) {
         let chosenDate = selectedDates[0].getTime();
-        checkDate(chosenDate, todaysDate)
+        checkDate(chosenDate, new Date())
     },
 
 };
@@ -50,9 +49,8 @@ function checkDate(date1, date2) {
                 return;
               }
             timerId = setInterval(() => {
-                const delta = date1 - date2;
+                const delta = date1 - new Date();
                 const result = convertMs(delta);
-                console.log(result)
                 const { days, hours, minutes, seconds } = result;
             
                 if (delta >= 0) {
